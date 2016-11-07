@@ -100,3 +100,70 @@ Inside we are going to use a [`dom/repeat` template repeater](https://www.polyme
 
 
 <div style="display:flex; justify-content:space-around; max-width:100%;"><div style="max-width:500px;"><img src="../img/with-toolbar-01.png" alt="Shop app" style="width:100%;" /></div></div>
+
+
+## Getting the talk list
+
+Now we want to listen to the user input and getting the list of talks for the chosen day.
+
+We begin by adding an event listener to each day in the toolbar:
+
+`elements/devoxx-main.html`:
+```html
+<paper-toolbar justify="around">
+  <template is="dom-repeat" items="[[schedules]]" as="item">
+    <div on-tap="_onDayChosen">{{item.title}}</div>
+  </template>
+</paper-toolbar>
+```
+
+And then, we add a function `_onDayChosen` where we get the chosen day:
+
+`elements/devoxx-main.html`:
+```js
+_onDayChosen: function(evt) {
+  var item = evt.model.item;
+  console.log("[devoxx-main] _onDayChosen",item);
+},
+```
+
+Inside a `dom-repeat` the events fired get an additional property, `model`, that gets you the exact instance that generated the event.
+
+So now, we call the API with the chosen day, by using `iron-ajax`, but not in `auto` mode.
+
+`elements/devoxx-main.html`:
+```js
+_onDayChosen: function(evt) {
+  var item = evt.model.item;
+  console.log("[devoxx-main] _onDayChosen",item);
+  this.$.dayRequest.url = item.href;
+  this.$.dayRequest.generateRequest();
+},
+_onDayScheduleResponse: function(evt, ironRequest) {
+    console.debug("[devoxx-main] _onSchedulesResponse",ironRequest.response);
+},
+```
+
+So no we have as response a list of talk slots. We are going to explore it by showing it on the screen.
+
+We define a `stringify` method:
+
+`elements/devoxx-main.html`:
+```js
+stringify: function(item) {
+  return JSON.stringify(item);
+},
+});
+```
+
+And we use another `dom-repeat` to display each slot:
+
+
+`elements/devoxx-main.html`:
+```html
+    <template is="dom-repeat" items="[[slots]]" as="item">
+      <div>
+        [[stringify(item)]]
+      </div>
+    </template>
+```
