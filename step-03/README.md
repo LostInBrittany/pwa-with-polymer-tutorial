@@ -34,7 +34,7 @@ We are going to add an automatic call to the `schedules` endpoint to your `devox
 
 `elements/devoxx-main.html`
 ```HTML
-<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 ```
 
 And now we do a GET call to the API, and when we will get an answer, we assign the answer to the property `schedules`:
@@ -56,7 +56,7 @@ So then we write a `_onSchedulesResponse` on our `devoxx-main` element, where we
 ```JS
 _onSchedulesResponse: function(evt, ironRequest) {
   this.schedules = ironRequest.response.links;
-  console,debug("[devoxx-main] _onSchedulesResponse",this.schedules.links);
+  console.debug("[devoxx-main] _onSchedulesResponse",this.schedules);
 }
 ```
 
