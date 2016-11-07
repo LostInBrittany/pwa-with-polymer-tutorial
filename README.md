@@ -7,7 +7,7 @@ title: Progressive Web Apps with Polymer - Devoxx tutorial
 
 *A work-in-progress tutorial for creating a Progressive Web App (PWA) with Polymer, using the Devoxx API as example*
 
-<div style="display:flex; justify-content:space-around; max-width:100%;"><div style="max-width:500px;"><img src="img/devoxx.svg" alt= "Logo" style="width:100%;" /></div></div>
+<div style="display:flex; justify-content:space-around; max-width:100%;"><div style="max-width:500px;"><img src="./img/devoxx.png" alt= "Logo" style="width:100%;" /></div></div>
 
 
 
