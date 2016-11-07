@@ -94,14 +94,14 @@ Now we are going to add routing to our empty app. We begin by adding `app-route`
   "description": "The PWA with Polymer Devoxx tutorial",
   "main": "index.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0"
+    "app-route": "PolymerElements/app-route#^0.9.0",
+    "polymer": "Polymer/polymer#^1.4.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
   },
   "devDependencies": {
-    "app-route": "PolymerElements/app-route#^0.9.0",
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
-    "web-component-tester": "^4.0.0",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+    "web-component-tester": "^4.0.0"
   }
 }
 ```
@@ -157,16 +157,17 @@ Let's begin again by adding the dependencies for `iron-pages` and  `iron-selecto
   "name": "devoxx",
   "description": "The PWA with Polymer Devoxx tutorial",
   "main": "index.html",
+
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0"
+    "app-route": "PolymerElements/app-route#^0.9.0",
+    "iron-pages": "PolymerElements/iron-pages#^1.0.0",
+    "polymer": "Polymer/polymer#^1.4.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
   },
   "devDependencies": {
-    "app-route": "PolymerElements/app-route#^0.9.0",
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
-    "iron-pages": "PolymerElements/iron-pages#^1.0.0",
-    "web-component-tester": "^4.0.0",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+    "web-component-tester": "^4.0.0"
   }
 }
 ```
@@ -198,4 +199,6 @@ Now test it by going to `http://localhost:8080/`, `http://localhost:8080/main`, 
 
 ### Create and use three empty elements
 
-We are now going to replace the three *divs* inside the `<iron-pages>` by three custom elements: `<devoxx-main>`, `<devoxx-bye>` and `<devoxx-lost>`.
+As a last exercise, we proprose you to replace the three *divs* inside the `<iron-pages>` by three custom elements: `<devoxx-main>`, `<devoxx-bye>` and `<devoxx-lost>` that you're goint to create in an `elements` folder inside `app`.
+
+And then, play a bit with your element, add some text, images, CSS, make yourself a bit at home with Polymer.

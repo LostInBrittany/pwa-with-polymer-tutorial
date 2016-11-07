@@ -1,0 +1,64 @@
+<!--
+@license MIT
+Copyright (c) 2016 Horacio "LostInBrittany" Gonzalez
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+
+
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+
+<dom-module id="devoxx-main">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+
+		<iron-ajax
+        id="schedulesRequest"
+        url="http://cfp.devoxx.be/api/conferences/DV16/schedules/"
+        on-response="_onSchedulesResponse"
+        auto></iron-ajax>
+
+    <paper-toolbar justify="around">
+      <template is="dom-repeat" items="[[schedules]]" as="item">
+        <div>{{item.title}}</div>
+      </template>
+    </paper-toolbar>
+
+    <h1>Hello Devoxx!</h1>
+
+  </template>
+
+
+  <script>
+    Polymer({
+      is: 'devoxx-main',
+      properties: {
+        name: {
+          type: String,
+          value: 'main',
+        },
+        schedules: {
+          type: Object,
+        },
+      },
+      _onSchedulesResponse: function(evt, ironRequest) {
+        this.schedules = ironRequest.response.links;
+        console.debug("[devoxx-main] _onSchedulesResponse",this.schedules);
+      }
+    });
+  </script>
+</dom-module>
