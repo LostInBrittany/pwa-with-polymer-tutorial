@@ -1,0 +1,22 @@
+{
+  "name": "pwa-with-polymer",
+  "version": "1.0.0",
+  "description": "PWA with Polymer - Devoxx tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LostInBrittany/pwa-with-polymer-tutorial.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LostInBrittany/pwa-with-polymer-tutorial/issues"
+  },
+  "homepage": "https://github.com/LostInBrittany/pwa-with-polymer-tutorial#readme",
+  "dependencies": {
+    "metalsmith": "^2.3.0"
+  }
+}

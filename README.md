@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Progressive Web Apps with Polymer - Devoxx tutorial
 ---
 
@@ -8,7 +7,7 @@ title: Progressive Web Apps with Polymer - Devoxx tutorial
 
 *A work-in-progress tutorial for creating a Progressive Web App (PWA) with Polymer, using the Devoxx API as example*
 
-<div style="display: flex; justify-content: center;"><div style="max-width:500px;"><img src="img/devoxx.svg" alt= "Logo" style="width:100%;" /></div></div>
+<div style="display:flex; justify-content:space-around; max-width:100%;"><div style="max-width:500px;"><img src="img/devoxx.svg" alt= "Logo" style="width:100%;" /></div></div>
 
 
 
@@ -38,10 +37,46 @@ You can go through the whole tutorial in a couple of hours or you may want to sp
 
 ## What do I need to use this tutorial?
 
-The two most basic tools needed for this tutorial are a modern web browser (ideally [Chrome]() or [Chromium]()) and a text editor (we suggest the excellent [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io))).
+The tools strictly needed for this tutorial are a modern web browser (ideally [Chrome]() or [Chromium]()), a text editor (we suggest the excellent [Visual Studio Code](https://code.visualstudio.com/) or [Atom](https://atom.io))), a web server and the [Polymer CLI](https://github.com/Polymer/polymer-cli). If you're unable to install the Polymer CLI (for example your're in  workshop with slow network connection), you will be able to do the tutorial, even if in a slightly degraded mode, as we have committed all the needed resources to this repository.
 
-Besides them you will need either the [Polymer CLI](https://github.com/Polymer/polymer-cli) or, 	
-at a minimal level, a web server to test your code.
+
+### Web server
+
+Security policies in the browser make impossible to fully test your JavaScript applications when they have been loaded by opening a local file, they need to be served from a web server.
+
+If you already have a web server (Apache, Nginx, ...) in your computer, you can use it. If not, there are several quick options available:
+
+- Web Server for Chrome: a Chrome/Chromium application that gives you a web server embedded in your browser. You can install it [from the Chrome Web Store](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en) .
+
+  After installing the Web Server for Chrome app, click on the Apps shortcut on the bookmarks bar:
+
+  <div style="display:flex; justify-content:space-around; max-width:100%;"><div style="max-width:500px;"><img src="img/chromewebserver-00.png" alt= "Web Server for Chrome" style="width:100%;" /></div></div>
+
+  And then on the *Web Server for Chrome* logo to configure the server:
+
+
+  <div style="display:flex; justify-content:space-around; max-width:100%;"><div style="max-width:500px;"><img src="img/chromewebserver-01.png" alt= "Web Server for Chrome" style="width:100%;" /></div></div>
+
+  Now you choose as folder to serve the root of this repository. We also suggest to run it on port 8080. You launch the server and open a browser window navigate to http://localhost:8000/test.html to verify that everything is good
+
+- Using Python: if you have Python in your system, the easiest way would be to run the embedded SimpleHTTPServer. Go to the project directory and run
+
+  ```
+  # Python 2.x
+  python -m SimpleHTTPServer 8080
+  ```
+
+  or
+
+  ```
+  # Python 3.x
+  python -m http.server 8080
+  ```
+
+  to start the web server. Now, open a browser window for the app and navigate to http://localhost:8080/test.html to verify that everything is good.
+
+- If you have [NodeJS](http://nodejs.org) in your system, we have put a minimalist JavaScript web-server on `./scripts/web-server.js`. To see the app running in a browser, open a separate terminal/command line tab or window, go to the project directory and then run `node ./scripts/web-server.js` to start the web server. Now, open a browser window navigate to http://localhost:8000/test.html to verify that everything is good.
+
 
 ### Polymer CLI
 
@@ -62,44 +97,6 @@ Ideally you should install Polymer CLI. Polymer CLI is a *NodeJS* based tool, an
 
 Then you'll be able to use `polymer`command to create, build and serve your PWA.
 
-### Web server
-
-If you're unable to install the Polymer CLI, you need at least a working web server on your computer. Security policies in the browser make impossible to fully test your JavaScript applications when they have been loaded by opening a local file, they need to be served from a web server.
-
-If you already have a web server (Apache, Nginx, ...) in your computer, you can use it. If not, there are several quick options available:
-
-- Web Server for Chrome: a Chrome/Chromium application that gives you a web server embedded in your browser. You can install it [from the Chrome Web Store](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en) .
-
-  After installing the Web Server for Chrome app, click on the Apps shortcut on the bookmarks bar:
-
-  <div style="display: flex; justify-content: center;"><div style="max-width:500px;"><img src="img/chromewebserver-00.png" alt= "Web Server for Chrome" style="width:100%;" /></div></div>
-
-  And then on the *Web Server for Chrome* logo to configure the server:
-
-
-  <div style="display: flex; justify-content: center;"><div style="max-width:500px;"><img src="img/chromewebserver-01.png" alt= "Web Server for Chrome" style="width:100%;" /></div></div>
-
-  Now you choose as folder to serve the root of this repository. We also suggest to run it on port 8080. You launch the server and open a browser window navigate to http://localhost:8000/test.html to verify that everything is good
-
-- Using Python: if you have Python in your system, the easiest way would be to run the embedded SimpleHTTPServer. Go to the project directory and run
-
-  ```
-  # Python 2.x
-  python -m SimpleHTTPServer
-  ```
-
-  or
-
-  ```
-  # Python 3.x
-  python -m http.server
-  ```
-
-  to start the web server. Now, open a browser window for the app and navigate to http://localhost:8000/test.html to verify that everything is good.
-
-- If you have [NodeJS](http://nodejs.org) in your system, we have put a minimalist JavaScript web-server on `./scripts/web-server.js`. To see the app running in a browser, open a separate terminal/command line tab or window, go to the project directory and then run `node ./scripts/web-server.js` to start the web server. Now, open a browser window navigate to http://localhost:8000/test.html to verify that everything is good.
-
-
 ## How is the tutorial organized ##
 
 As the computers used for the courses haven't Git, we have structured the project to allow a Git-less use. The `app` directory is the main directory of the project, the working version of the code. The tutorial is divided in steps, each one in its own directory:
@@ -108,3 +105,11 @@ As the computers used for the courses haven't Git, we have structured the projec
 1. [Using Polymer CLI to generate an empty PWA](./step-02/)
 1. [Calling the DEVOXX API and showing schedule information](./step-03/)
 1. [Getting a list of elements from the API and showing it by integrating custom web components](./step-03/)
+
+In each step directory you have a README file that explain the objective of the step, that you will do in the working directory `app`. If you have problems or if you get lost, you also have the solution of each step in the step directories. So if you want to see the intended result of  the 6th step, you can point your browser to http://localhost:8080/step-06/index.html
+
+## What should I do now?  ##
+
+OK, now you're ready to follow this tutorial. If you're familiar with git, begin by cloning this repository (`git clone https://github.com/LostInBrittany/pwa-with-polymer-tutorial`), else you can simply download the zipped file from [GitHub](https://github.com/LostInBrittany/pwa-with-polymer-tutorial/archive/master.zip).
+
+Now can go to [step-01](./step-01) and begin to follow the README of that step. Let's begin!
