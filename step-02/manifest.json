@@ -1,6 +1,7 @@
 {
-  "name": "empty-app",
-  "short_name": "empty-app",
+  "name": "devoxx",
+  "short_name": "devoxx",
+  "description": "The PWA with Polymer Devoxx tutorial",
   "start_url": "/",
   "display": "standalone"
 }

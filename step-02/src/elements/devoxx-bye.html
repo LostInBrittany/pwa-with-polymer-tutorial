@@ -1,4 +1,3 @@
-<!doctype html>
 <!--
 @license MIT
 Copyright (c) 2016 Horacio "LostInBrittany" Gonzalez
@@ -9,22 +8,31 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
 
-    <title>PWA with Polymer - Devoxx tutorial</title>
-    <meta name="description" content="devoxx description">
 
-    <!-- See https://goo.gl/OOhYW5 -->
-    <link rel="manifest" href="/manifest.json">
+<dom-module id="devoxx-bye">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
 
-    <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <h1>Bye Devoxx!</h1>
 
-    <link rel="import" href="/src/devoxx-app/devoxx-app.html">
-  </head>
-  <body>
-    <devoxx-app></devoxx-app>
-  </body>
-</html>
+  </template>
+
+
+  <script>
+    Polymer({
+      is: 'devoxx-bye',
+      properties: {
+        name: {
+          type: String,
+          value: 'bye',
+        },
+      },
+    });
+  </script>
+</dom-module>

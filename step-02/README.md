@@ -146,3 +146,56 @@ _routePageChanged: function(page) {
 ```
 
 Now you have a working routing system. We are going to create to * pages* for your app now.
+
+
+## Adding two *pages*
+
+Let's begin again by adding the dependencies for `iron-pages` and  `iron-selector` to the `bower.json`:
+
+```json
+{
+  "name": "devoxx",
+  "description": "The PWA with Polymer Devoxx tutorial",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0"
+  },
+  "devDependencies": {
+    "app-route": "PolymerElements/app-route#^0.9.0",
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "iron-pages": "PolymerElements/iron-pages#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}
+```
+
+And, after yet another `bower install`, import both components into `devoxx-app`:
+
+```HTML
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+```
+
+And now, add an `<iron-pages` components that allows you to select what children component to show.
+`<iron-pages>` will look to the value of its  `selected` property and look at its children elements,
+searching one with the attribute defined by `attr-for-selected` (`name` in our case) and show it.
+
+If no element match, it will use the  `fallback-selection` value.
+
+```HTML
+	<iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="lost">
+    <div name="main"><h1>Hello Devoxx</h1></div>
+    <div name="bye"><h1>Bye Devoxx</h1></div>
+    <div name="lost"><h1>It`s seem I'm lost...</h1></div>
+  </iron-pages>
+```
+
+Now test it by going to `http://localhost:8080/`, `http://localhost:8080/main`,  `http://localhost:8080/bye`,  `http://localhost:8080/wtf`.
+
+
+## To go deeper
+
+### Create and use three empty elements
+
+We are now going to replace the three *divs* inside the `<iron-pages>` by three custom elements: `<devoxx-main>`, `<devoxx-bye>` and `<devoxx-lost>`.
